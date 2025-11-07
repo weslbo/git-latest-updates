@@ -1,0 +1,21 @@
+{
+  "servers": {
+    "github-diff": {
+      "type": "local",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ivotoby/openapi-mcp-server",
+        "--api-base-url", "https://git-latest-updates.azurewebsites.net/api",
+        "--spec-inline", "{\"openapi\":\"3.0.0\",\"info\":{\"title\":\"GitHub Markdown Diff Aggregator\",\"version\":\"0.1.0\"},\"paths\":{\"/get-latest-updates\":{\"post\":{\"summary\":\"Get latest changes commits updates from a github repository\",\"parameters\":[{\"name\":\"repo\",\"in\":\"query\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"name\":\"date\",\"in\":\"query\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"responses\":{\"200\":{\"description\":\"Aggregated diffs\",\"content\":{\"text/plain\":{\"schema\":{\"type\":\"string\"}}}}}}}}}",
+        "--headers", "x-functions-key:${X_FUNCTIONS_KEY},git-token:${GIT_TOKEN}",
+        "--operation", "post"
+      ],
+      "env": {
+        "X_FUNCTIONS_KEY": "${X_FUNCTIONS_KEY}",
+        "GIT_TOKEN": "${GIT_TOKEN}"
+      }
+    }
+  },
+  "inputs": []
+}

@@ -1,0 +1,4 @@
+POST https://git-latest-updates.azurewebsites.net/api/get-latest-updates?repo=microsoftdocs/databricks-pr&date=2025-11-06T00:00:00Z HTTP/1.1
+Content-Type: application/json
+x-functions-key: {{$dotenv X_FUNCTIONS_KEY}}
+git-token: {{$dotenv GIT_TOKEN}}
